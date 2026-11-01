@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Ruang Belajar Kelas 9</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;scroll-behavior:smooth}
+body{font-family:Arial,Helvetica,sans-serif;background:#f7faf7;color:#24352a;line-height:1.6}
+nav{position:sticky;top:0;z-index:1000;display:flex;justify-content:space-between;align-items:center;padding:14px 6%;background:#fff;border-bottom:3px solid #2e7d32;box-shadow:0 2px 8px rgba(0,0,0,.08)}
+.logo{font-size:21px;font-weight:700;color:#2e7d32}.logo span{color:#333}
+nav ul{list-style:none;display:flex;gap:22px;flex-wrap:wrap}nav a{color:#333;text-decoration:none;font-size:14px;font-weight:600}nav a:hover{color:#2e7d32}
+.hero{min-height:620px;padding:80px 6%;display:flex;align-items:center;justify-content:space-between;gap:50px;background:#edf7ee;border-bottom:1px solid #d4e5d5}.hero-text{max-width:650px}.badge{display:inline-block;padding:6px 12px;background:#dcefdc;border-left:4px solid #2e7d32;color:#28652b;font-size:13px;font-weight:700;margin-bottom:18px}.hero h1{font-size:clamp(38px,6vw,68px);line-height:1.1;margin-bottom:18px;color:#203b25}.hero h1 span{display:block;color:#2e7d32}.hero p{font-size:16px;color:#59675c;margin-bottom:25px}.buttons{display:flex;gap:10px;flex-wrap:wrap}.btn{display:inline-block;padding:11px 18px;text-decoration:none;font-weight:700;border-radius:5px}.btn-primary{background:#2e7d32;color:#fff}.btn-primary:hover{background:#256628}.btn-outline{border:1px solid #2e7d32;color:#2e7d32;background:#fff}.btn-outline:hover{background:#edf7ee}
+.hero-card{width:320px;padding:28px;background:#fff;border:1px solid #ccdccc;border-top:5px solid #2e7d32;border-radius:8px;box-shadow:0 5px 15px rgba(0,0,0,.07)}.hero-icon{width:85px;height:85px;margin:auto;display:flex;align-items:center;justify-content:center;font-size:45px;background:#edf7ee;border:1px solid #c9dfca;border-radius:50%}.hero-card h3{text-align:center;margin:18px 0 5px;color:#2e7d32}.hero-card p{text-align:center;color:#657066;font-size:14px}
+section{padding:70px 6%}.section-title{text-align:center;margin-bottom:35px}.section-title h2{font-size:32px;color:#25452a;margin-bottom:6px}.section-title p{color:#68746a}
+.subject-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:15px}.subject{padding:20px;min-height:165px;background:#fff;border:1px solid #d5dfd5;border-radius:6px;transition:.2s}.subject:hover{border-color:#2e7d32;box-shadow:0 4px 12px rgba(0,0,0,.08);transform:translateY(-3px)}.subject-icon{font-size:30px;margin-bottom:10px}.subject h3{font-size:17px;color:#2e5f34;margin-bottom:7px}.subject p{font-size:13px;color:#68746a}
+.summary{background:#f0f6f0;border-top:1px solid #d9e5d9;border-bottom:1px solid #d9e5d9}.summary-container{max-width:1000px;margin:auto}.summary-buttons{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-bottom:20px}.summary-buttons button{cursor:pointer;border:1px solid #b8cdb9;background:#fff;color:#315b35;padding:9px 14px;border-radius:4px;font-weight:700}.summary-buttons button:hover,.summary-buttons button.active{background:#2e7d32;color:#fff;border-color:#2e7d32}.summary-box{display:none;padding:25px;background:#fff;border:1px solid #d2ddd2;border-left:4px solid #2e7d32;border-radius:5px}.summary-box.active{display:block}.summary-box h3{color:#2e7d32;margin-bottom:10px}.summary-box p,.summary-box li{color:#59665b}.summary-box ul{margin-left:20px}
+.quiz-section{background:#fff}.quiz-container{max-width:850px;margin:auto;padding:28px;background:#f8faf8;border:1px solid #d5dfd5;border-radius:7px}.subject-select{margin-bottom:20px}.subject-select label{display:block;font-weight:700;margin-bottom:7px;color:#315b35}.subject-select select{width:100%;padding:11px;border:1px solid #bdcdbd;border-radius:4px;background:#fff;font-size:14px;color:#333}.progress{height:8px;background:#dfe8df;border-radius:4px;overflow:hidden;margin-bottom:25px}.progress-bar{height:100%;width:0;background:#2e7d32;transition:.3s}.quiz-number{font-size:13px;color:#657066;margin-bottom:8px}.question{font-size:20px;font-weight:700;color:#253d29;margin-bottom:20px}.option{display:block;width:100%;text-align:left;padding:12px 14px;margin:9px 0;border:1px solid #cfd9cf;background:#fff;border-radius:5px;cursor:pointer;font-size:14px;color:#333}.option:hover{border-color:#2e7d32;background:#f2f8f2}.option.correct{background:#e2f2e3;border-color:#2e7d32;color:#205b25}.option.wrong{background:#fbe8e8;border-color:#c94b4b;color:#8b2626}.quiz-buttons{display:flex;gap:10px;margin-top:20px;flex-wrap:wrap}.quiz-btn{border:0;background:#2e7d32;color:#fff;padding:10px 16px;border-radius:4px;font-weight:700;cursor:pointer}.quiz-btn:disabled{background:#aab7ab;cursor:not-allowed}.result{display:none;text-align:center;margin-top:25px;padding:25px;background:#edf7ee;border:1px solid #cbdcca;border-radius:5px}.score{font-size:34px;font-weight:700;color:#2e7d32}.tips{background:#f0f6f0}.mission-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:15px}.mission-card,.tip{background:#fff;border:1px solid #d4dfd4;border-radius:6px;padding:22px}.mission-card h3,.tip h3{color:#2e7d32;margin-bottom:8px}.mission-card p,.tip p{color:#606c62;font-size:14px}.number{font-size:28px;font-weight:700;color:#2e7d32;margin-bottom:5px}
+footer{background:#25452a;color:#fff;text-align:center;padding:28px 6%;font-size:14px}footer p{margin:4px 0}
+@media(max-width:1000px){.subject-grid{grid-template-columns:repeat(3,1fr)}.hero{flex-direction:column;text-align:center}.hero-text{max-width:750px}.buttons{justify-content:center}.hero-card{width:min(100%,380px)}.mission-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:650px){nav{position:relative;flex-direction:column;gap:10px;align-items:flex-start}nav ul{gap:12px}.hero{padding:55px 5%;min-height:auto}.hero h1{font-size:40px}.section-title h2{font-size:27px}section{padding:50px 5%}.subject-grid,.mission-grid{grid-template-columns:1fr}.quiz-container{padding:18px}.question{font-size:18px}}
+
+/* =====================================================
+   VISUAL TAMBAHAN - LEBIH HIDUP & INTERAKTIF
+===================================================== */
+.hero{position:relative;overflow:hidden;background:linear-gradient(135deg,#edf7ee 0%,#ffffff 48%,#dff1e1 100%)}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;pointer-events:none;z-index:0;animation:floatBubble 7s ease-in-out infinite}
+.hero::before{width:230px;height:230px;right:8%;top:30px;background:rgba(46,125,50,.10);box-shadow:0 0 0 28px rgba(46,125,50,.035),0 0 0 58px rgba(46,125,50,.02)}
+.hero::after{width:110px;height:110px;left:4%;bottom:25px;background:rgba(139,195,74,.13);animation-delay:-2s}
+.hero-text,.hero-card{position:relative;z-index:2}
+.hero-card{animation:cardFloat 4s ease-in-out infinite;transform-origin:center}
+.hero-icon{animation:iconPulse 2.2s ease-in-out infinite}
+.btn{position:relative;overflow:hidden;transition:.25s;box-shadow:0 4px 0 rgba(0,0,0,.08)}
+.btn::after{content:"";position:absolute;top:-80%;left:-120%;width:70%;height:250%;background:rgba(255,255,255,.28);transform:rotate(25deg);transition:.5s}
+.btn:hover::after{left:140%}.btn:hover{transform:translateY(-3px);box-shadow:0 7px 14px rgba(46,125,50,.18)}
+.subject{position:relative;overflow:hidden}.subject::before{content:"";position:absolute;right:-30px;top:-30px;width:90px;height:90px;border-radius:50%;background:rgba(46,125,50,.06);transition:.3s}.subject:hover::before{transform:scale(1.7)}
+.subject-icon{display:inline-block;animation:iconBob 2.8s ease-in-out infinite}.subject:nth-child(2n) .subject-icon{animation-delay:-.7s}.subject:nth-child(3n) .subject-icon{animation-delay:-1.4s}
+.quiz-container{position:relative;overflow:hidden;box-shadow:0 10px 25px rgba(34,66,40,.08)}
+.quiz-container::before{content:"✦  ✧  ✦";position:absolute;right:20px;top:10px;color:rgba(46,125,50,.18);font-size:24px;letter-spacing:7px;animation:sparkle 2s ease-in-out infinite}
+.progress-bar{background:linear-gradient(90deg,#2e7d32,#66bb6a,#8bc34a);background-size:200% 100%;animation:progressGlow 2s linear infinite}
+.option{transition:.2s;position:relative;overflow:hidden}.option:hover{transform:translateX(4px)}
+.option.correct{animation:correctPop .35s ease}.option.wrong{animation:wrongShake .35s ease}
+.feedback{display:none;margin-top:16px;padding:15px 17px;border-radius:8px;border-left:5px solid #2e7d32;background:#edf7ee;color:#315b35;box-shadow:0 4px 12px rgba(46,125,50,.08);animation:feedbackIn .3s ease}.feedback.wrong{border-left-color:#c94b4b;background:#fff0f0;color:#7e2929}.feedback-title{font-weight:800;margin-bottom:5px}.feedback-answer{font-weight:700;margin-bottom:5px}.feedback small{color:inherit;opacity:.85}
+.spark{position:fixed;width:8px;height:8px;border-radius:50%;pointer-events:none;z-index:9999;animation:burst .75s ease-out forwards}
+@keyframes floatBubble{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(18px) rotate(8deg)}}
+@keyframes cardFloat{0%,100%{transform:translateY(0) rotate(0deg)}50%{transform:translateY(-8px) rotate(1deg)}}
+@keyframes iconPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.08)}}
+@keyframes iconBob{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+@keyframes sparkle{0%,100%{opacity:.35;transform:scale(.9)}50%{opacity:1;transform:scale(1.08)}}
+@keyframes progressGlow{to{background-position:200% 0}}
+@keyframes correctPop{50%{transform:scale(1.02)}}
+@keyframes wrongShake{25%{transform:translateX(-5px)}75%{transform:translateX(5px)}}
+.shake-now{animation:containerShake .35s ease}
+@keyframes containerShake{25%{transform:translateX(-5px)}50%{transform:translateX(5px)}75%{transform:translateX(-3px)}}
+@keyframes feedbackIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes burst{0%{transform:translate(0,0) scale(1);opacity:1}100%{transform:translate(var(--x),var(--y)) scale(.1);opacity:0}}
+
+/* =====================================================
+   VISUAL TAMBAHAN - MISI & TIPS
+===================================================== */
+#misi{
+    background:linear-gradient(180deg,#f7fbf7 0%,#edf7ee 100%);
+    position:relative;
+    overflow:hidden;
+}
+#misi::before{
+    content:"";
+    position:absolute;
+    width:220px;height:220px;
+    border:18px solid rgba(46,125,50,.07);
+    border-radius:50%;
+    top:-90px;right:-60px;
+}
+#misi::after{
+    content:"";
+    position:absolute;
+    width:130px;height:130px;
+    border-radius:30px;
+    background:rgba(46,125,50,.06);
+    transform:rotate(25deg);
+    bottom:-55px;left:-35px;
+}
+.mission-grid{
+    position:relative;
+    z-index:1;
+}
+.mission-card{
+    position:relative;
+    overflow:hidden;
+    min-height:190px;
+    transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
+}
+.mission-card::after{
+    content:"";
+    position:absolute;
+    width:80px;height:80px;
+    border-radius:50%;
+    background:#edf7ee;
+    right:-25px;bottom:-25px;
+}
+.mission-card:hover{
+    transform:translateY(-8px);
+    border-color:#2e7d32;
+    box-shadow:0 12px 24px rgba(46,125,50,.14);
+}
+.mission-card .number{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:48px;height:48px;
+    border-radius:50%;
+    background:#2e7d32;
+    color:#fff;
+    margin-bottom:12px;
+    position:relative;
+    z-index:2;
+}
+.mission-card h3,.mission-card p{
+    position:relative;
+    z-index:2;
+}
+
+#tips{
+    background:#fff;
+    position:relative;
+}
+#tips .section-title h2{
+    position:relative;
+}
+#tips .section-title h2::after{
+    content:"";
+    display:block;
+    width:55px;
+    height:4px;
+    margin:10px auto 0;
+    background:#2e7d32;
+    border-radius:5px;
+}
+#tips .tips{
+    max-width:1000px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:16px;
+}
+#tips .tip{
+    position:relative;
+    min-height:145px;
+    overflow:hidden;
+    transition:transform .25s ease,box-shadow .25s ease;
+}
+#tips .tip:hover{
+    transform:translateY(-6px);
+    box-shadow:0 10px 22px rgba(0,0,0,.10);
+}
+#tips .tip > span{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    width:54px;height:54px;
+    background:#edf7ee;
+    border:1px solid #c9dfca;
+    border-radius:14px;
+    font-size:27px;
+    margin-bottom:12px;
+}
+#tips .tip::before{
+    content:"";
+    position:absolute;
+    top:0;left:0;
+    width:100%;
+    height:4px;
+    background:#2e7d32;
+}
+@media(max-width:1000px){
+    #tips .tips{grid-template-columns:1fr 1fr}
+}
+@media(max-width:650px){
+    #tips .tips{grid-template-columns:1fr}
+}
+
+
+/* =====================================================
+   RINGKASAN MATERI DI ATAS LATIHAN SOAL
+===================================================== */
+.material-summary{
+    max-width:850px;
+    margin:0 auto 28px;
+    padding:22px 24px;
+    background:#f0f6f0;
+    border:1px solid #cbdcca;
+    border-left:5px solid #2e7d32;
+    border-radius:7px;
+    box-shadow:0 5px 14px rgba(34,66,40,.07);
+}
+.material-summary h3{
+    color:#2e7d32;
+    margin-bottom:8px;
+    font-size:21px;
+}
+.material-summary p{
+    color:#59665b;
+    margin:5px 0;
+}
+.material-summary ul{
+    margin:8px 0 0 20px;
+    color:#59665b;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- =====================================================
+     NAVBAR
+===================================================== -->
+<nav>
+
+    <div class="logo">
+        🎓 RUANG<span>BELAJAR</span>
+    </div>
+
+    <ul>
+
+        <li><a href="#home">Home</a></li>
+
+        <li><a href="#mapel">Mapel</a></li>
+
+        
+
+        <li><a href="#latihan">Latihan</a></li>
+
+        <li><a href="#misi">Misi</a></li>
+
+        <li><a href="#tips">Tips</a></li>
+
+    </ul>
+
+</nav>
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+<section class="hero" id="home">
+
+    <div class="hero-text">
+
+        <div class="badge">
+            🚀 PLATFORM BELAJAR SMP KELAS 9 • TA 2026/2027
+        </div>
+
+        <h1>
+            Belajar Lebih Mudah,
+            <span>Raih Masa Depan.</span>
+        </h1>
+
+        <p>
+            Selamat datang di Ruang Belajar Kelas 9.
+            Temukan materi pelajaran, rangkuman,
+            latihan soal, dan berbagai tantangan
+            untuk meningkatkan kemampuan belajarmu.
+        </p>
+
+        <div class="buttons">
+
+            <a href="#mapel" class="btn btn-primary">
+                📚 Mulai Belajar
+            </a>
+
+            <a href="#latihan" class="btn btn-outline">
+                🧠 Latihan Soal
+            </a>
+
+        </div>
+
+    </div>
+
+    <div class="hero-card">
+
+        <div class="hero-icon">
+            🎓
+        </div>
+
+        <h3>KELAS 9</h3>
+
+        <p>
+            Belajar • Berlatih • Berkembang
+        </p>
+
+        <br>
+
+        <p>
+            "Kesuksesan dimulai dari kemauan
+            untuk terus belajar."
+        </p>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     MAPEL
+===================================================== -->
+<section id="mapel">
+
+    <div class="section-title">
+
+        <h2>📚 Mata Pelajaran</h2>
+
+        <p>
+            Materi pembelajaran untuk siswa SMP kelas 9.
+        </p>
+
+    </div>
+
+    <div class="subject-grid">
+
+        <div class="subject">
+            <div class="subject-icon">➗</div>
+            <h3>Matematika</h3>
+            <p>
+                Statistika, peluang, perpangkatan,
+                bangun ruang dan konsep matematika.
+            </p>
+        </div>
+
+        <div class="subject">
+            <div class="subject-icon">🔬</div>
+            <h3>IPA</h3>
+            <p>
+                Biologi, fisika, pewarisan sifat,
+                listrik dan lingkungan.
+            </p>
+        </div>
+
+        <div class="subject">
+            <div class="subject-icon">🌏</div>
+            <h3>IPS</h3>
+            <p>
+                Sejarah, ekonomi, geografi,
+                globalisasi dan kehidupan sosial.
+            </p>
+        </div>
+
+        <div class="subject">
+            <div class="subject-icon">🇮🇩</div>
+            <h3>Bahasa Indonesia</h3>
+            <p>
+                Pidato, cerpen, resensi,
+                persuasi dan teks argumentasi.
+            </p>
+        </div>
+
+        <div class="subject">
+            <div class="subject-icon">🇬🇧</div>
+            <h3>Bahasa Inggris</h3>
+            <p>
+                Grammar, vocabulary,
+                narrative, recount dan procedure.
+            </p>
+        </div>
+
+        <div class="subject">
+            <div class="subject-icon">🏛️</div>
+            <h3>Pendidikan Pancasila</h3>
+            <p>
+                Pancasila, UUD 1945,
+                demokrasi dan keberagaman.
+            </p>
+        </div>
+
+
+        <div class="subject">
+            <div class="subject-icon">💻</div>
+            <h3>Informatika</h3>
+            <p>
+                Algoritma, jaringan,
+                data dan keamanan digital.
+            </p>
+        </div>
+
+        <div class="subject">
+            <div class="subject-icon">🏃</div>
+            <h3>PJOK</h3>
+            <p>
+                Olahraga, kebugaran,
+                kesehatan dan atletik.
+            </p>
+        </div>
+
+        <div class="subject">
+            <div class="subject-icon">🎨</div>
+            <h3>Seni & Prakarya</h3>
+            <p>
+                Seni rupa, musik, tari,
+                teater dan kerajinan.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     LATIHAN SOAL 90 SOAL (9 MAPEL × 10 SOAL)
+===================================================== -->
+<section class="quiz-section" id="latihan">
+
+    <div class="section-title">
+
+        <div id="materialSummary" class="material-summary">
+            <h3>📖 Ringkasan Materi Matematika</h3>
+            <p><strong>Materi:</strong> barisan aritmetika, perpangkatan dan bentuk akar, persamaan, persentase, peluang, gradien, bangun ruang, statistika, dan perbandingan.</p>
+        </div>
+
+        <h2>🧠 Latihan Soal Kelas 9</h2>
+
+        <p>
+            Tersedia 10 soal untuk setiap mata pelajaran (90 soal total).
+        </p>
+
+    </div>
+
+    <div class="quiz-container">
+
+        <div class="subject-select">
+
+            <label for="subjectSelect">
+                📚 Pilih Mata Pelajaran
+            </label>
+
+            <select id="subjectSelect"
+                    onchange="changeSubject()">
+
+                <option value="Matematika">
+                    ➗ Matematika
+                </option>
+
+                <option value="IPA">
+                    🔬 IPA
+                </option>
+
+                <option value="IPS">
+                    🌏 IPS
+                </option>
+
+                <option value="Bahasa Indonesia">
+                    🇮🇩 Bahasa Indonesia
+                </option>
+
+                <option value="Bahasa Inggris">
+                    🇬🇧 Bahasa Inggris
+                </option>
+
+                <option value="Pendidikan Pancasila">
+                    🏛️ Pendidikan Pancasila
+                </option>
+
+
+                <option value="Informatika">
+                    💻 Informatika
+                </option>
+
+                <option value="PJOK">
+                    🏃 PJOK
+                </option>
+
+                <option value="Seni dan Prakarya">
+                    🎨 Seni & Prakarya
+                </option>
+
+            </select>
+
+        </div>
+
+        <div class="progress">
+
+            <div id="progressBar"
+                 class="progress-bar">
+            </div>
+
+        </div>
+
+        <div id="quizArea">
+
+            <div id="quizNumber"
+                 class="quiz-number">
+                Soal 1 dari 10
+            </div>
+
+            <div id="question"
+                 class="question">
+            </div>
+
+            <div id="options">
+            </div>
+
+            <div id="feedback" class="feedback">
+            </div>
+
+        </div>
+
+        <div class="quiz-buttons">
+
+            <button
+                id="nextBtn"
+                class="quiz-btn"
+                onclick="nextQuestion()"
+                disabled>
+                Soal Berikutnya →
+            </button>
+
+            <button
+                class="quiz-btn"
+                onclick="restartQuiz()">
+                🔄 Ulangi
+            </button>
+
+        </div>
+
+        <div id="result"
+             class="result">
+
+            <div>🎉 Latihan Selesai!</div>
+
+            <div id="score"
+                 class="score">
+            </div>
+
+            <div id="scoreText">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     MISI
+===================================================== -->
+<section id="misi">
+
+    <div class="section-title">
+
+        <h2>🚀 Misi Kelas 9</h2>
+
+        <p>
+            Tantangan untuk membangun kebiasaan belajar.
+        </p>
+
+    </div>
+
+    <div class="mission-grid">
+
+        <div class="mission-card">
+
+            <div class="number">01</div>
+
+            <h3>📖 Kuasai Materi</h3>
+
+            <p>
+                Pelajari materi dan buat rangkuman
+                menggunakan bahasamu sendiri.
+            </p>
+
+        </div>
+
+        <div class="mission-card">
+
+            <div class="number">02</div>
+
+            <h3>🧠 Latihan Soal</h3>
+
+            <p>
+                Kerjakan soal secara rutin untuk
+                mengetahui kemampuanmu.
+            </p>
+
+        </div>
+
+        <div class="mission-card">
+
+            <div class="number">03</div>
+
+            <h3>🏆 Persiapkan Masa Depan</h3>
+
+            <p>
+                Bangun kebiasaan belajar yang baik
+                untuk menghadapi jenjang berikutnya.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     TIPS
+===================================================== -->
+<section id="tips">
+
+    <div class="section-title">
+
+        <h2>💡 Tips Belajar</h2>
+
+        <p>
+            Kebiasaan sederhana untuk belajar lebih teratur.
+        </p>
+
+    </div>
+
+    <div class="tips">
+
+        <div class="tip">
+            <span>⏰</span>
+            <h3>Atur Waktu</h3>
+            <p>
+                Buat jadwal belajar yang teratur.
+            </p>
+        </div>
+
+        <div class="tip">
+            <span>📝</span>
+            <h3>Buat Rangkuman</h3>
+            <p>
+                Tuliskan poin penting dari materi.
+            </p>
+        </div>
+
+        <div class="tip">
+            <span>🧠</span>
+            <h3>Latihan</h3>
+            <p>
+                Kerjakan soal untuk menguji pemahaman.
+            </p>
+        </div>
+
+        <div class="tip">
+            <span>💤</span>
+            <h3>Istirahat</h3>
+            <p>
+                Istirahat cukup agar tetap fokus.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- =====================================================
+     FOOTER
+===================================================== -->
+<footer>
+
+    <h2>🎓 RUANG BELAJAR KELAS 9</h2>
+
+    <p>
+        Belajar • Berlatih • Berkembang • Raih Masa Depan
+    </p>
+
+    <br>
+
+    <p>
+        © 2026/2027 Ruang Belajar Kelas 9
+    </p>
+
+</footer>
+
+<script>
+/* =====================================================
+   SOUND EFFECT JAWABAN BENAR / SALAH
+   Menggunakan Web Audio API - tanpa file audio eksternal.
+===================================================== */
+let quizAudio = null;
+
+function quizAudioContext() {
+    if (!quizAudio) {
+        quizAudio = new (window.AudioContext || window.webkitAudioContext)();
+    }
+    if (quizAudio.state === "suspended") quizAudio.resume();
+    return quizAudio;
+}
+
+function tone(freq, delay, duration, type, volume) {
+    const ctx = quizAudioContext();
+    const osc = ctx.createOscillator();
+    const gain = ctx.createGain();
+
+    osc.type = type;
+    osc.frequency.setValueAtTime(freq, ctx.currentTime + delay);
+
+    gain.gain.setValueAtTime(0.0001, ctx.currentTime + delay);
+    gain.gain.exponentialRampToValueAtTime(volume, ctx.currentTime + delay + 0.015);
+    gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + delay + duration);
+
+    osc.connect(gain);
+    gain.connect(ctx.destination);
+
+    osc.start(ctx.currentTime + delay);
+    osc.stop(ctx.currentTime + delay + duration + 0.02);
+}
+
+function playCorrectSound() {
+    tone(523.25, 0, 0.12, "sine", 0.08);
+    tone(659.25, 0.12, 0.12, "sine", 0.08);
+    tone(783.99, 0.24, 0.18, "sine", 0.09);
+}
+
+function playWrongSound() {
+    tone(330, 0, 0.16, "sawtooth", 0.045);
+    tone(220, 0.16, 0.22, "sawtooth", 0.045);
+}
+</script>
+
+<script>
+
+/* =====================================================
+   RANGKUMAN
+===================================================== */
+
+function showSummary(id, button) {
+
+    document.querySelectorAll(".summary-box")
+        .forEach(box => {
+            box.classList.remove("active");
+        });
+
+    document.getElementById(id)
+        .classList.add("active");
+
+    document.querySelectorAll(".sum-btn")
+        .forEach(btn => {
+            btn.classList.remove("active");
+        });
+
+    button.classList.add("active");
+}
+
+
+/* =====================================================
+   RINGKASAN MATERI PER MAPEL
+===================================================== */
+const materialSummaries = {
+    "Matematika": {
+        title: "📖 Ringkasan Materi Matematika",
+        text: "Barisan aritmetika, perpangkatan dan bentuk akar, persamaan, persentase, peluang, gradien, bangun ruang, statistika, dan perbandingan."
+    },
+    "IPA": {
+        title: "📖 Ringkasan Materi IPA",
+        text: "Pewarisan sifat, gen dan DNA, sistem reproduksi, pubertas, energi kinetik, listrik, energi listrik, konservasi tanah, cermin cekung, dan perubahan energi."
+    },
+    "IPS": {
+        title: "📖 Ringkasan Materi IPS",
+        text: "Modernisasi, urbanisasi, ekspor-impor, perdagangan internasional, ASEAN, globalisasi, perubahan sosial, serta kehidupan masyarakat di era perkembangan teknologi."
+    },
+    "Bahasa Indonesia": {
+        title: "📖 Ringkasan Materi Bahasa Indonesia",
+        text: "Kalimat persuasif, teks argumentasi, teks diskusi, majas personifikasi, hubungan sebab, resensi, cerita inspiratif, penyampaian pendapat, dan gagasan utama."
+    },
+    "Bahasa Inggris": {
+        title: "📖 Ringkasan Materi Bahasa Inggris",
+        text: "First conditional, passive voice, simple past, procedure text, conjunction of contrast, expressing opinion, giving advice, narrative text, comparative degree, dan present perfect."
+    },
+    "Pendidikan Pancasila": {
+        title: "📖 Ringkasan Materi Pendidikan Pancasila",
+        text: "Pancasila sebagai dasar negara, persatuan, hak dan kewajiban, kemerdekaan berpendapat, UUD 1945, Bhinneka Tunggal Ika, musyawarah, bela negara, peraturan, dan keadilan."
+    },
+    "Informatika": {
+        title: "📖 Ringkasan Materi Informatika",
+        text: "Berpikir komputasional, dekomposisi, algoritma, jaringan WAN, IP address, router, spreadsheet, keamanan digital, hoaks, HTML, dan JavaScript."
+    },
+    "PJOK": {
+        title: "📖 Ringkasan Materi PJOK",
+        text: "Pemanasan, daya tahan, teknik passing sepak bola, dribbling bola basket, passing bawah bola voli, kelincahan, latihan kebugaran, renang gaya dada, pendinginan, dan pola hidup sehat."
+    },
+    "Seni dan Prakarya": {
+        title: "📖 Ringkasan Materi Seni dan Prakarya",
+        text: "Seni rupa tiga dimensi, teknik pahat, gelap terang, poster, tempo, pitch, tari tradisional, bahan lunak, desain produk, dan kemasan."
+    }
+};
+
+function updateMaterialSummary() {
+    const box = document.getElementById("materialSummary");
+    if (!box) return;
+
+    const summary = materialSummaries[currentSubject];
+    if (!summary) return;
+
+    box.innerHTML =
+        "<h3>" + summary.title + "</h3>" +
+        "<p><strong>Materi:</strong> " + summary.text + "</p>";
+}
+
+/* =====================================================
+   BANK SOAL
+   10 SOAL PER MAPEL
+===================================================== */
+
+const questions = {
+
+"Matematika": [
+{q:"Suku ke-20 barisan aritmetika 5, 8, 11, ... adalah...",o:["59","62","65","68"],a:1},
+{q:"Hasil dari (2³ × 2⁵) : 2⁴ adalah...",o:["4","8","16","32"],a:2},
+{q:"Nilai √144 + √25 adalah...",o:["13","15","17","19"],a:2},
+{q:"Persamaan 3x − 5 = 16 memiliki nilai x = ...",o:["5","6","7","8"],a:2},
+{q:"Sebuah toko memberi diskon 20% dari harga Rp250.000. Harga setelah diskon adalah...",o:["Rp180.000","Rp190.000","Rp200.000","Rp210.000"],a:2},
+{q:"Peluang muncul angka genap pada pelemparan sebuah dadu adalah...",o:["1/6","1/3","1/2","2/3"],a:2},
+{q:"Titik A(2, 3) dan B(6, 11). Gradien garis AB adalah...",o:["1","2","3","4"],a:1},
+{q:"Sebuah tabung berjari-jari 7 cm dan tinggi 10 cm. Dengan π = 22/7, volumenya adalah...",o:["1.100 cm³","1.320 cm³","1.540 cm³","1.760 cm³"],a:2},
+{q:"Data 6, 7, 8, 8, 9, 10, 12 memiliki median...",o:["7","8","9","10"],a:1},
+{q:"Sebuah kelas memiliki 24 siswa. Sebanyak 18 siswa lulus. Persentase siswa yang lulus adalah...",o:["60%","70%","75%","80%"],a:2}
+],
+
+"IPA": [
+{q:"Pada persilangan Aa × Aa, peluang keturunan memiliki genotipe aa adalah...",o:["0%","25%","50%","75%"],a:1},
+{q:"Bagian DNA yang membawa informasi untuk menentukan suatu sifat disebut...",o:["Gen","Jaringan","Organ","Enzim"],a:0},
+{q:"Organ reproduksi pria yang menghasilkan sel sperma adalah...",o:["Prostat","Testis","Ureter","Vesikula seminalis"],a:1},
+{q:"Hormon yang berperan penting dalam perubahan fisik pada masa pubertas perempuan adalah...",o:["Insulin","Estrogen","Adrenalin","Tiroksin"],a:1},
+{q:"Sebuah benda bermassa 4 kg bergerak dengan kecepatan 5 m/s. Energi kinetiknya adalah...",o:["20 J","40 J","50 J","100 J"],a:2},
+{q:"Sebuah hambatan 4 Ω dialiri arus 3 A. Tegangan pada hambatan tersebut adalah...",o:["7 V","12 V","16 V","24 V"],a:1},
+{q:"Sebuah lampu 20 W menyala selama 5 jam. Energi listrik yang digunakan adalah...",o:["25 Wh","50 Wh","100 Wh","200 Wh"],a:2},
+{q:"Salah satu upaya konservasi tanah untuk mengurangi erosi di lahan miring adalah...",o:["Terasering","Pembakaran lahan","Penebangan hutan","Membiarkan tanah terbuka"],a:0},
+{q:"Jika benda diletakkan di luar pusat kelengkungan cermin cekung, bayangannya bersifat...",o:["Maya, tegak, diperbesar","Nyata, terbalik, diperkecil","Nyata, tegak, diperbesar","Maya, terbalik, diperkecil"],a:1},
+{q:"Perubahan energi pada panel surya adalah...",o:["Cahaya menjadi listrik","Listrik menjadi cahaya","Kimia menjadi gerak","Panas menjadi kimia"],a:0}
+],
+
+"IPS": [
+{q:"Perubahan masyarakat menuju pola kehidupan yang lebih maju dengan pemanfaatan ilmu pengetahuan dan teknologi disebut...",o:["Urbanisasi","Modernisasi","Migrasi","Reboisasi"],a:1},
+{q:"Perpindahan penduduk dari desa ke kota disebut...",o:["Transmigrasi","Urbanisasi","Imigrasi","Emigrasi"],a:1},
+{q:"Kegiatan menjual barang atau jasa ke luar negeri disebut...",o:["Impor","Ekspor","Konsumsi","Distribusi"],a:1},
+{q:"Kegiatan membeli barang atau jasa dari luar negeri disebut...",o:["Ekspor","Produksi","Impor","Investasi"],a:2},
+{q:"Salah satu alasan terjadinya perdagangan internasional adalah...",o:["Semua negara memiliki sumber daya yang sama","Perbedaan sumber daya dan kebutuhan antarnegara","Tidak adanya kebutuhan masyarakat","Semua negara menggunakan mata uang yang sama"],a:1},
+{q:"ASEAN merupakan organisasi kerja sama negara-negara di kawasan...",o:["Asia Timur","Asia Selatan","Asia Tenggara","Asia Barat"],a:2},
+{q:"Dampak positif globalisasi di bidang pendidikan adalah...",o:["Akses sumber belajar menjadi lebih luas","Komunikasi antarnegara terputus","Teknologi tidak berkembang","Sumber informasi semakin terbatas"],a:0},
+{q:"Sikap yang tepat menghadapi globalisasi budaya adalah...",o:["Menolak semua budaya luar","Menerima semua budaya tanpa pertimbangan","Menyaring pengaruh luar sambil melestarikan budaya lokal","Menghilangkan budaya daerah"],a:2},
+{q:"Jika nilai ekspor lebih besar daripada nilai impor, neraca perdagangan mengalami...",o:["Defisit","Surplus","Inflasi","Depresi"],a:1},
+{q:"Contoh perubahan sosial akibat perkembangan teknologi komunikasi adalah...",o:["Komunikasi jarak jauh menjadi lebih cepat","Hubungan antarwilayah terhenti","Informasi hanya tersedia di satu daerah","Masyarakat tidak dapat bertukar informasi"],a:0}
+],
+
+"Bahasa Indonesia": [
+{q:"Perhatikan kalimat: 'Mari kita kurangi penggunaan plastik sekali pakai mulai dari sekolah.' Kalimat tersebut termasuk...",o:["Kalimat berita","Kalimat persuasif","Kalimat definisi","Kalimat deskripsi"],a:1},
+{q:"Dalam teks argumentasi, pendapat penulis sebaiknya diperkuat dengan...",o:["Data dan alasan yang relevan","Cerita yang tidak berkaitan","Kata-kata tanpa bukti","Pendapat yang berubah-ubah"],a:0},
+{q:"Tujuan teks diskusi adalah...",o:["Menyajikan satu pendapat tanpa pembanding","Membahas suatu isu dari beberapa sudut pandang","Menceritakan pengalaman pribadi","Memberikan langkah membuat produk"],a:1},
+{q:"Bagian teks diskusi yang memuat alasan pendukung suatu isu disebut...",o:["Isu","Argumen pendukung","Judul","Koda"],a:1},
+{q:"Perhatikan kalimat: 'Angin malam menyapa daun-daun di halaman.' Majas yang digunakan adalah...",o:["Metafora","Personifikasi","Hiperbola","Ironi"],a:1},
+{q:"Kata penghubung 'karena' dalam kalimat menunjukkan hubungan...",o:["Sebab","Pertentangan","Tujuan","Pilihan"],a:0},
+{q:"Tujuan resensi adalah...",o:["Menyalin seluruh isi karya","Memberikan gambaran dan penilaian terhadap karya","Mengubah karya menjadi berita","Menyembunyikan identitas karya"],a:1},
+{q:"Dalam cerita inspiratif, bagian yang berisi penyelesaian masalah disebut...",o:["Orientasi","Komplikasi","Resolusi","Identitas"],a:2},
+{q:"Kalimat yang paling tepat untuk menyampaikan pendapat secara santun adalah...",o:["Pendapatmu pasti salah.","Saya berpendapat bahwa kegiatan itu bermanfaat karena dapat melatih kerja sama.","Pokoknya harus begitu.","Tidak ada alasan untuk berdiskusi."],a:1},
+{q:"Saat membaca teks informasi, langkah yang tepat untuk menemukan gagasan utama adalah...",o:["Mengabaikan judul","Mencermati inti pembahasan setiap paragraf","Hanya membaca kalimat terakhir","Menghafalkan semua kata"],a:1}
+],
+
+"Bahasa Inggris": [
+{q:"If I study hard, I ___ the test.",o:["pass","passed","will pass","passing"],a:2},
+{q:"The classroom ___ every morning by the students.",o:["cleans","is cleaned","cleaned","is cleaning"],a:1},
+{q:"She ___ her homework before dinner yesterday.",o:["finish","finishes","finished","finishing"],a:2},
+{q:"The purpose of a procedure text is to...",o:["Tell a past experience","Explain how to do or make something","Describe a person","Entertain the reader with a story"],a:1},
+{q:"Although he was tired, he continued studying. The word 'although' expresses...",o:["Cause","Contrast","Purpose","Addition"],a:1},
+{q:"Which sentence expresses an opinion?",o:["The library opens at 7 a.m.","I think reading every day is useful.","She lives in Probolinggo.","The book has 120 pages."],a:1},
+{q:"Which sentence gives advice?",o:["You should review the lesson before the test.","You reviewed the lesson yesterday.","You are reviewing the lesson.","You will review the lesson tomorrow."],a:0},
+{q:"The main purpose of a narrative text is to...",o:["Give instructions","Tell a story","Present a timetable","Explain a scientific formula"],a:1},
+{q:"Choose the correct comparative sentence.",o:["Math is more difficult than Art.","Math is difficult than Art.","Math is most difficult than Art.","Math more difficult Art."],a:0},
+{q:"'They have visited the museum.' The tense used is...",o:["Simple past","Present continuous","Present perfect","Simple future"],a:2}
+],
+
+"Pendidikan Pancasila": [
+{q:"Pancasila sebagai dasar negara berarti Pancasila menjadi...",o:["Dasar penyelenggaraan negara","Lagu kebangsaan","Bahasa daerah","Nama lembaga negara"],a:0},
+{q:"Contoh penerapan sila ketiga di sekolah adalah...",o:["Membeda-bedakan teman","Menjaga persatuan meskipun berbeda suku dan agama","Memaksakan pendapat","Mengutamakan kelompok sendiri"],a:1},
+{q:"Hak dan kewajiban warga negara seharusnya dilaksanakan secara...",o:["Sepihak","Seimbang dan bertanggung jawab","Bebas tanpa aturan","Bergantian tanpa kewajiban"],a:1},
+{q:"Contoh kemerdekaan berpendapat yang bertanggung jawab adalah...",o:["Menyampaikan kritik dengan sopan dan berdasarkan fakta","Menyebarkan berita palsu","Menghina orang yang berbeda pendapat","Memaksakan pendapat dengan ancaman"],a:0},
+{q:"UUD Negara Republik Indonesia Tahun 1945 berkedudukan sebagai...",o:["Hukum dasar negara","Lambang negara","Semboyan negara","Bahasa nasional"],a:0},
+{q:"Bhinneka Tunggal Ika mengajarkan bahwa keberagaman harus disikapi dengan...",o:["Diskriminasi","Saling menghormati dan menjaga persatuan","Permusuhan","Mengutamakan satu kelompok"],a:1},
+{q:"Dalam musyawarah, keputusan bersama sebaiknya dilaksanakan dengan...",o:["Tanggung jawab","Paksaan","Kecurangan","Ketidakpedulian"],a:0},
+{q:"Salah satu contoh bela negara bagi pelajar adalah...",o:["Melanggar aturan sekolah","Belajar dengan sungguh-sungguh dan menjaga persatuan","Menyebarkan konflik","Merusak fasilitas umum"],a:1},
+{q:"Peraturan perundang-undangan dibuat agar kehidupan bermasyarakat...",o:["Tidak memiliki aturan","Lebih tertib dan memiliki kepastian hukum","Bebas tanpa batas","Hanya menguntungkan satu kelompok"],a:1},
+{q:"Sikap yang mencerminkan keadilan dalam keberagaman adalah...",o:["Memberi kesempatan secara adil tanpa diskriminasi","Memilih teman berdasarkan suku","Mengutamakan kelompok sendiri","Menolak perbedaan"],a:0}
+],
+
+"Informatika": [
+{q:"Dalam berpikir komputasional, memecah masalah besar menjadi bagian-bagian kecil disebut...",o:["Dekomposisi","Enkripsi","Kompresi","Simulasi"],a:0},
+{q:"Langkah-langkah logis dan sistematis untuk menyelesaikan masalah disebut...",o:["Algoritma","Database","Browser","Firewall"],a:0},
+{q:"Jaringan komputer yang mencakup wilayah sangat luas disebut...",o:["LAN","PAN","WAN","USB"],a:2},
+{q:"Alamat logis yang digunakan untuk mengenali perangkat dalam jaringan disebut...",o:["IP address","HTML","CPU","RAM"],a:0},
+{q:"Perangkat yang meneruskan paket data antarjaringan disebut...",o:["Router","Keyboard","Monitor","Scanner"],a:0},
+{q:"Data yang tersusun dalam baris dan kolom dapat diolah dengan...",o:["Spreadsheet","Pemutar musik","Kamera","Speaker"],a:0},
+{q:"Contoh praktik keamanan digital yang tepat adalah...",o:["Menggunakan kata sandi kuat dan berbeda untuk akun penting","Membagikan kata sandi kepada teman","Mengklik semua tautan asing","Menggunakan data pribadi sebagai password"],a:0},
+{q:"Informasi palsu yang disebarkan seolah-olah benar disebut...",o:["Hoaks","Algoritma","Database","Protokol"],a:0},
+{q:"HTML pada pembuatan website terutama digunakan untuk...",o:["Menyusun struktur halaman web","Mengatur tegangan listrik","Menghubungkan kabel jaringan","Menghapus sistem operasi"],a:0},
+{q:"JavaScript pada website dapat digunakan untuk...",o:["Membuat interaksi dan perilaku dinamis pada halaman","Menggantikan monitor","Membuat kabel internet","Mengisi tinta printer"],a:0}
+],
+
+"PJOK": [
+{q:"Tujuan pemanasan sebelum aktivitas olahraga adalah...",o:["Menyiapkan tubuh dan membantu mengurangi risiko cedera","Membuat tubuh langsung lelah","Mengurangi kelenturan","Menghentikan denyut jantung"],a:0},
+{q:"Latihan lari jarak jauh terutama meningkatkan...",o:["Daya tahan","Kelentukan","Keseimbangan","Koordinasi mata"],a:0},
+{q:"Dalam sepak bola, teknik mengoper bola kepada teman disebut...",o:["Passing","Shooting","Dribbling","Heading"],a:0},
+{q:"Dalam bola basket, membawa bola dengan cara memantulkannya disebut...",o:["Passing","Dribbling","Shooting","Pivot"],a:1},
+{q:"Teknik menerima bola menggunakan kedua lengan bagian bawah dalam bola voli disebut...",o:["Passing bawah","Smash","Block","Servis"],a:0},
+{q:"Kemampuan mengubah arah gerak dengan cepat dan tepat disebut...",o:["Kelincahan","Kekuatan","Daya tahan","Kelentukan"],a:0},
+{q:"Latihan sit-up terutama melatih kekuatan otot...",o:["Perut","Betis","Lengan","Leher"],a:0},
+{q:"Gaya renang dengan gerakan kaki menyerupai katak adalah...",o:["Gaya bebas","Gaya dada","Gaya punggung","Gaya kupu-kupu"],a:1},
+{q:"Pendinginan setelah olahraga bertujuan membantu tubuh...",o:["Kembali ke kondisi normal secara bertahap","Bekerja lebih berat","Mengalami cedera","Berhenti bernapas"],a:0},
+{q:"Pola hidup sehat bagi remaja antara lain...",o:["Tidur cukup, aktif bergerak, dan mengonsumsi makanan bergizi","Begadang setiap hari","Jarang bergerak","Mengabaikan kebersihan diri"],a:0}
+],
+
+"Seni dan Prakarya": [
+{q:"Karya seni rupa yang memiliki panjang, lebar, dan tinggi disebut karya...",o:["Dua dimensi","Tiga dimensi","Dekoratif","Grafis"],a:1},
+{q:"Teknik membuat patung dengan mengurangi bahan menggunakan alat disebut teknik...",o:["Pahat","Cetak","Tempel","Kolase"],a:0},
+{q:"Unsur seni rupa yang menunjukkan kesan terang dan gelap disebut...",o:["Garis","Gelap terang","Tekstur","Titik"],a:1},
+{q:"Poster yang efektif sebaiknya memiliki pesan yang...",o:["Panjang dan sulit dipahami","Singkat, jelas, dan menarik","Tidak berhubungan dengan gambar","Tanpa tujuan"],a:1},
+{q:"Dalam musik, cepat lambatnya lagu disebut...",o:["Tempo","Melodi","Timbre","Harmoni"],a:0},
+{q:"Tinggi rendahnya nada dalam musik berkaitan dengan...",o:["Pitch","Tempo","Dinamika","Warna"],a:0},
+{q:"Tari yang berkembang dan diwariskan turun-temurun dalam suatu daerah disebut tari...",o:["Tradisional","Modern","Kontemporer","Bebas"],a:0},
+{q:"Bahan lunak yang dapat digunakan untuk membuat kerajinan adalah...",o:["Tanah liat","Baja","Besi","Aluminium"],a:0},
+{q:"Tujuan membuat desain produk sebelum produksi adalah...",o:["Merencanakan bentuk, fungsi, dan tampilan produk","Menghabiskan bahan","Menghilangkan fungsi produk","Mengurangi kualitas"],a:0},
+{q:"Kemasan produk yang baik seharusnya...",o:["Menarik, informatif, dan melindungi produk","Tidak melindungi produk","Tanpa informasi","Sulit digunakan"],a:0}
+]
+
+};
+
+/* =====================================================
+   EVALUASI JAWABAN
+   Penjelasan muncul setelah siswa memilih jawaban.
+===================================================== */
+const explanations = {
+"Matematika": [
+"Barisan memiliki beda 3, jadi U20 = 5 + 19×3 = 62.",
+"(2³×2⁵):2⁴ = 2^(3+5−4) = 2⁴ = 16.",
+"√144 = 12 dan √25 = 5, sehingga jumlahnya 17.",
+"3x−5=16 → 3x=21 → x=7.",
+"Diskon = 20%×Rp250.000 = Rp50.000, jadi harga akhir Rp200.000.",
+"Bilangan genap pada dadu adalah 2, 4, dan 6, sehingga peluangnya 3/6 = 1/2.",
+"Gradien = (11−3)/(6−2) = 8/4 = 2.",
+"Volume = πr²t = 22/7×49×10 = 1.540 cm³.",
+"Data sudah berurutan dan memiliki 7 nilai, sehingga median adalah nilai ke-4, yaitu 8.",
+"18/24×100% = 75%.",
+],
+"IPA": [
+"Persilangan Aa×Aa menghasilkan AA, Aa, Aa, aa. Jadi peluang aa adalah 1/4 atau 25%.",
+"Gen adalah bagian DNA yang membawa informasi pewarisan suatu sifat.",
+"Testis merupakan organ reproduksi pria yang menghasilkan sperma.",
+"Estrogen berperan dalam perkembangan ciri-ciri seksual sekunder perempuan pada masa pubertas.",
+"Energi kinetik = ½mv² = ½×4×25 = 50 J.",
+"Hukum Ohm: V = I×R = 3×4 = 12 V.",
+"Energi = daya×waktu = 20 W×5 jam = 100 Wh.",
+"Terasering memperlambat aliran air di lereng sehingga membantu mengurangi erosi.",
+"Benda di luar pusat kelengkungan cermin cekung menghasilkan bayangan nyata, terbalik, dan diperkecil.",
+"Panel surya mengubah energi cahaya matahari menjadi energi listrik.",
+],
+"IPS": [
+"Modernisasi merupakan perubahan menuju kehidupan yang lebih maju dengan pemanfaatan ilmu pengetahuan dan teknologi.",
+"Urbanisasi adalah perpindahan penduduk dari desa ke kota.",
+"Ekspor adalah kegiatan menjual atau mengirim barang/jasa ke luar negeri.",
+"Impor adalah kegiatan membeli atau memasukkan barang/jasa dari luar negeri.",
+"Perbedaan sumber daya, kondisi geografis, dan kebutuhan mendorong perdagangan internasional.",
+"ASEAN merupakan organisasi kerja sama negara-negara Asia Tenggara.",
+"Globalisasi memperluas akses terhadap sumber belajar digital dan informasi pendidikan.",
+"Sikap yang tepat adalah menyaring pengaruh budaya luar tanpa meninggalkan budaya lokal.",
+"Ekspor lebih besar daripada impor berarti terjadi surplus perdagangan.",
+"Teknologi komunikasi membuat pertukaran informasi jarak jauh berlangsung lebih cepat.",
+],
+"Bahasa Indonesia": [
+"Kata 'mari' menunjukkan ajakan sehingga kalimat tersebut bersifat persuasif.",
+"Argumentasi yang baik didukung data dan alasan yang relevan agar pendapat lebih meyakinkan.",
+"Teks diskusi membahas isu dengan mempertimbangkan beberapa sudut pandang.",
+"Argumen pendukung berisi alasan atau bukti yang mendukung suatu posisi dalam diskusi.",
+"Angin diberi kemampuan seperti manusia, yaitu 'menyapa', sehingga termasuk personifikasi.",
+"Kata 'karena' menunjukkan hubungan sebab.",
+"Resensi memberikan gambaran sekaligus penilaian terhadap sebuah karya.",
+"Resolusi merupakan bagian yang menunjukkan penyelesaian masalah dalam cerita.",
+"Kalimat tersebut menyatakan pendapat secara santun dan dilengkapi alasan.",
+"Gagasan utama dapat ditemukan dengan mencermati inti pembahasan setiap paragraf.",
+],
+"Bahasa Inggris": [
+"First conditional menggunakan If + simple present dan hasil dengan will + verb: will pass.",
+"Bentuk passive simple present menggunakan is/am/are + past participle: is cleaned.",
+"Keterangan 'yesterday' menunjukkan simple past, sehingga digunakan 'finished'.",
+"Procedure text menjelaskan cara melakukan atau membuat sesuatu melalui langkah-langkah.",
+"Although menunjukkan pertentangan antara dua keadaan.",
+"Kalimat 'I think...' menyatakan pendapat pribadi.",
+"Should digunakan untuk memberikan saran atau nasihat.",
+"Narrative text digunakan untuk menceritakan sebuah cerita atau rangkaian peristiwa.",
+"Comparative untuk kata sifat panjang menggunakan more + adjective + than.",
+"Have/has + past participle menunjukkan present perfect; 'have visited' adalah present perfect.",
+],
+"Pendidikan Pancasila": [
+"Pancasila menjadi dasar dalam penyelenggaraan kehidupan bernegara.",
+"Sila ketiga adalah Persatuan Indonesia, sehingga menjaga persatuan dalam keberagaman sesuai dengan sila tersebut.",
+"Hak dan kewajiban perlu dilaksanakan secara seimbang dan bertanggung jawab.",
+"Kemerdekaan berpendapat harus disampaikan secara santun, bertanggung jawab, dan tidak melanggar hak orang lain.",
+"UUD 1945 merupakan hukum dasar tertulis dalam sistem ketatanegaraan Indonesia.",
+"Bhinneka Tunggal Ika menekankan persatuan dalam keberagaman.",
+"Keputusan musyawarah perlu dilaksanakan dengan tanggung jawab setelah disepakati bersama.",
+"Pelajar dapat menunjukkan bela negara antara lain melalui belajar sungguh-sungguh, menaati aturan, dan menjaga persatuan.",
+"Peraturan membantu menciptakan ketertiban dan kepastian hukum dalam kehidupan bersama.",
+"Keadilan berarti memperlakukan orang secara adil tanpa diskriminasi.",
+],
+"Informatika": [
+"Dekomposisi adalah memecah masalah kompleks menjadi bagian-bagian yang lebih kecil.",
+"Algoritma adalah urutan langkah logis dan sistematis untuk menyelesaikan masalah.",
+"WAN (Wide Area Network) mencakup wilayah yang sangat luas.",
+"IP address digunakan untuk mengenali atau mengalamati perangkat dalam jaringan.",
+"Router meneruskan paket data dan menghubungkan jaringan yang berbeda.",
+"Spreadsheet cocok untuk mengolah data berbentuk tabel baris dan kolom.",
+"Kata sandi kuat dan berbeda membantu mengurangi risiko pengambilalihan akun.",
+"Hoaks adalah informasi palsu atau menyesatkan yang disebarkan seolah-olah benar.",
+"HTML digunakan untuk menyusun struktur dan elemen halaman web.",
+"JavaScript dapat membuat halaman web merespons tindakan pengguna dan menjadi lebih interaktif.",
+],
+"PJOK": [
+"Pemanasan menyiapkan tubuh untuk aktivitas dan membantu mengurangi risiko cedera.",
+"Lari jarak jauh terutama melatih daya tahan tubuh.",
+"Passing adalah teknik mengoper bola kepada teman satu tim.",
+"Dribbling dalam bola basket adalah membawa bola dengan memantulkannya ke lantai.",
+"Passing bawah menggunakan kedua lengan bagian bawah untuk menerima atau mengarahkan bola.",
+"Kelincahan adalah kemampuan mengubah arah dan posisi tubuh dengan cepat serta tepat.",
+"Sit-up terutama melatih kekuatan otot perut.",
+"Gaya dada menggunakan gerakan kaki yang menyerupai gerakan katak.",
+"Pendinginan membantu tubuh kembali secara bertahap menuju kondisi istirahat.",
+"Pola hidup sehat mencakup tidur cukup, aktivitas fisik, makanan bergizi, dan menjaga kebersihan diri.",
+],
+"Seni dan Prakarya": [
+"Karya tiga dimensi memiliki panjang, lebar, dan tinggi serta memiliki volume.",
+"Teknik pahat dilakukan dengan mengurangi bagian bahan menggunakan alat pahat.",
+"Gelap terang menunjukkan perbedaan tingkat terang dan gelap pada karya seni rupa.",
+"Poster yang efektif menyampaikan pesan secara singkat, jelas, dan menarik.",
+"Tempo menunjukkan cepat atau lambatnya lagu dimainkan atau dinyanyikan.",
+"Pitch berkaitan dengan tinggi rendahnya nada.",
+"Tari tradisional berkembang dan diwariskan dalam lingkungan budaya tertentu.",
+"Tanah liat termasuk bahan lunak yang dapat dibentuk menjadi berbagai kerajinan.",
+"Desain membantu merencanakan bentuk, fungsi, dan tampilan produk sebelum dibuat.",
+"Kemasan yang baik melindungi produk sekaligus menarik dan memberikan informasi yang diperlukan.",
+]
+};
+
+/* =====================================================
+   VARIABEL QUIZ
+===================================================== */
+
+let currentSubject = "Matematika";
+
+let currentQuestion = 0;
+
+let score = 0;
+
+let answered = false;
+
+/* =====================================================
+   LOAD QUIZ
+===================================================== */
+
+function loadQuiz() {
+
+    updateMaterialSummary();
+
+    const data = questions[currentSubject];
+
+    const q = data[currentQuestion];
+
+    document.getElementById("quizNumber").innerHTML =
+        "Soal " + (currentQuestion + 1) + " dari " + data.length;
+
+    document.getElementById("question").innerHTML =
+        q.q;
+
+    const options =
+        document.getElementById("options");
+
+    options.innerHTML = "";
+
+    answered = false;
+
+    const feedback = document.getElementById("feedback");
+    feedback.style.display = "none";
+    feedback.className = "feedback";
+    feedback.innerHTML = "";
+
+    document.getElementById("nextBtn").disabled = true;
+
+    q.o.forEach((option,index) => {
+
+        const button =
+            document.createElement("button");
+
+        button.className = "option";
+
+        button.innerHTML =
+            String.fromCharCode(65 + index) +
+            ". " +
+            option;
+
+        button.onclick = function() {
+
+            answerQuestion(index, button);
+
+        };
+
+        options.appendChild(button);
+
+    });
+
+    const progress =
+        ((currentQuestion + 1) / data.length) * 100;
+
+    document.getElementById("progressBar")
+        .style.width = progress + "%";
+}
+
+/* =====================================================
+   JAWAB SOAL
+===================================================== */
+
+function answerQuestion(index, button) {
+
+    if(answered) return;
+
+    answered = true;
+
+    const questionData = questions[currentSubject][currentQuestion];
+    const correct = questionData.a;
+    const feedback = document.getElementById("feedback");
+    const options = document.querySelectorAll(".option");
+
+    options.forEach((option,i) => {
+        option.disabled = true;
+        if(i === correct) option.classList.add("correct");
+    });
+
+    const correctText = questionData.o[correct];
+
+    if(index === correct) {
+        playCorrectSound();
+        score++;
+        button.classList.add("correct");
+        feedback.className = "feedback";
+        feedback.innerHTML =
+            '<div class="feedback-title">🎉 Jawaban kamu benar!</div>' +
+            '<div class="feedback-answer">Jawaban: ' + correctText + '</div>' +
+            '<div>' + explanations[currentSubject][currentQuestion] + '</div>';
+        createSparkles(button);
+    } else {
+        playWrongSound();
+        button.classList.add("wrong");
+        feedback.className = "feedback wrong";
+        feedback.innerHTML =
+            '<div class="feedback-title">💡 Belum tepat, yuk pahami!</div>' +
+            '<div class="feedback-answer">Jawaban yang benar: ' + correctText + '</div>' +
+            '<div>' + explanations[currentSubject][currentQuestion] + '</div>';
+        document.querySelector(".quiz-container").classList.remove("shake-now");
+        void document.querySelector(".quiz-container").offsetWidth;
+        document.querySelector(".quiz-container").classList.add("shake-now");
+    }
+
+    feedback.style.display = "block";
+    document.getElementById("nextBtn").disabled = false;
+}
+
+function createSparkles(target) {
+    const rect = target.getBoundingClientRect();
+    const symbols = ["✦","✧","•","★","+","✦"];
+    for(let i=0;i<12;i++){
+        const spark = document.createElement("span");
+        spark.className = "spark";
+        spark.textContent = symbols[i % symbols.length];
+        spark.style.left = (rect.left + rect.width/2) + "px";
+        spark.style.top = (rect.top + rect.height/2) + "px";
+        spark.style.color = i % 2 ? "#66bb6a" : "#2e7d32";
+        spark.style.fontSize = (10 + Math.random()*12) + "px";
+        spark.style.setProperty("--x", ((Math.random()*180)-90) + "px");
+        spark.style.setProperty("--y", ((Math.random()*150)-90) + "px");
+        document.body.appendChild(spark);
+        setTimeout(() => spark.remove(), 800);
+    }
+}
+
+/* =====================================================
+   SOAL BERIKUTNYA
+===================================================== */
+
+function nextQuestion() {
+
+    if(!answered) return;
+
+    currentQuestion++;
+
+    if(currentQuestion >= questions[currentSubject].length) {
+
+        finishQuiz();
+
+        return;
+    }
+
+    loadQuiz();
+}
+
+/* =====================================================
+   SELESAI
+===================================================== */
+
+function finishQuiz() {
+
+    document.getElementById("quizArea")
+        .style.display = "none";
+
+    document.querySelector(".quiz-buttons")
+        .style.display = "none";
+
+    document.getElementById("progressBar")
+        .style.width = "100%";
+
+    const result =
+        document.getElementById("result");
+
+    result.style.display = "block";
+
+    document.getElementById("score").innerHTML =
+        score + " / 10";
+
+    let text = "";
+
+    if(score === 10) {
+
+        text =
+            "🏆 Sempurna! Semua jawaban benar.";
+
+    } else if(score >= 8) {
+
+        text =
+            "🎉 Sangat bagus! Terus pertahankan.";
+
+    } else if(score >= 6) {
+
+        text =
+            "👍 Bagus! Masih bisa ditingkatkan.";
+
+    } else {
+
+        text =
+            "📚 Jangan menyerah! Coba pelajari materinya lagi.";
+
+    }
+
+    document.getElementById("scoreText")
+        .innerHTML = text;
+}
+
+/* =====================================================
+   GANTI MAPEL
+===================================================== */
+
+function changeSubject() {
+
+    currentSubject =
+        document.getElementById("subjectSelect").value;
+
+    restartQuiz();
+}
+
+/* =====================================================
+   ULANGI QUIZ
+===================================================== */
+
+function restartQuiz() {
+
+    currentQuestion = 0;
+
+    score = 0;
+
+    answered = false;
+
+    document.getElementById("quizArea")
+        .style.display = "block";
+
+    document.querySelector(".quiz-buttons")
+        .style.display = "flex";
+
+    document.getElementById("result")
+        .style.display = "none";
+
+    loadQuiz();
+}
+
+/* =====================================================
+   JALANKAN QUIZ SAAT HALAMAN DIBUKA
+===================================================== */
+
+loadQuiz();
+
+</script>
+
+</body>
+</html>
